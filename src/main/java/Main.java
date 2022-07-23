@@ -10,10 +10,8 @@ import org.apache.http.util.EntityUtils;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 public class Main {
     public static final String REMOTE_SERVICE_URI = "https://api.nasa.gov/planetary/apod?api_key=qmBMLUFjyenlECvu3lNnNa4fPivJt98k3epD6nIT";
@@ -40,15 +38,14 @@ public class Main {
         response = HTTPClient.execute(request2);
 //        System.out.println(response);
 //        Arrays.stream(response.getAllHeaders()).forEach(System.out::println);
-        String body2 = EntityUtils.toString(response.getEntity());
+        byte[] body2 = response.getEntity().getContent().readAllBytes();
 //        System.out.println(body2);
 
         if (!Files.exists(Paths.get("SaharaAndromeda_Coy_1080.jpg"))) {
             Files.createFile(Paths.get("SaharaAndromeda_Coy_1080.jpg"));
         }
         try (OutputStream fos = new FileOutputStream("SaharaAndromeda_Coy_1080.jpg")) {
-            byte[] bytes = body2.getBytes(StandardCharsets.UTF_8);
-            fos.write(bytes, 0, bytes.length);
+            fos.write(body2, 0, body2.length);
             fos.flush();
         } catch (IOException e) {
             e.printStackTrace();

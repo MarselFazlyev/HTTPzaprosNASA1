@@ -6,7 +6,7 @@ public class Image {
     private String hdurl;
     private String explanation;
     private String mediaType;
-    private String service_version;
+    private String serviceVersion;
     private String title;
     private String url;
 
@@ -16,7 +16,7 @@ public Image(
             @JsonProperty("hdurl")String hdurl,
             @JsonProperty("explanation")String explanation,
             @JsonProperty("media_type")String mediaType,
-            @JsonProperty("service_version")String service_version,
+            @JsonProperty("service_version")String serviceVersion,
             @JsonProperty("Title")String title,
             @JsonProperty("url")String url) {
     this.copyright = copyright;
@@ -24,7 +24,7 @@ public Image(
     this.hdurl = hdurl;
     this.explanation = explanation;
     this.mediaType = mediaType;
-    this.service_version = service_version;
+    this.serviceVersion = serviceVersion;
     this.title = title;
     this.url = url;
 }
@@ -53,12 +53,12 @@ public Image(
         this.mediaType = mediaType;
     }
 
-    public String getService_version() {
-        return service_version;
+    public String getServiceVersion() {
+        return serviceVersion;
     }
 
-    public void setService_version(String service_version) {
-        this.service_version = service_version;
+    public void setServiceVersion(String serviceVersion) {
+        this.serviceVersion = serviceVersion;
     }
 
     public String getTitle() {
@@ -85,7 +85,7 @@ public Image(
                 "\n hdurl " + hdurl +
                 "\n explanation " + explanation +
                 "\n mediaType " + mediaType +
-                "\n serviceVersion " + service_version +
+                "\n serviceVersion " + serviceVersion +
                 "\n title " + title +
                 "\n url " + url +
                 '}';
